@@ -15,7 +15,7 @@ namespace CsAgile
 
         public void AddTransaction(decimal amount)
         {
-            RewardPoints += 0;
+            RewardPoints += CalculateRewardPoints(amount);
             Balance += amount;
         }
 
