@@ -109,6 +109,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions.cs" />
+    <Compile Include="FakeAccountRepository.cs" />
+    <Compile Include="AccountService.cs" />
+    <Compile Include="Account.cs" />
+    <Compile Include="IAccountRepository.cs" />
+    <Compile Include="IAccountService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup>
