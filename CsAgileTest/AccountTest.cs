@@ -11,7 +11,7 @@ namespace CsAgileTest
         public void AddingTransactionChangesBalance()
         {
             //Arrange
-            var account = new Account();
+            var account = new Account(AccountType.Silver);
 
             //Act
             account.AddTransaction(200m);
@@ -26,7 +26,7 @@ namespace CsAgileTest
             //Arrange
 
             //Act
-            var account = new Account();
+            var account = new Account(AccountType.Silver);
 
             //Assert
             Assert.AreEqual(0m, account.Balance);
@@ -36,7 +36,7 @@ namespace CsAgileTest
         public void Adding100TransactionChangesBalance()
         {
             //Arrange
-            var account = new Account();
+            var account = new Account(AccountType.Silver);
 
             //Act
             account.AddTransaction(100m);
@@ -49,7 +49,7 @@ namespace CsAgileTest
         public void AddingTwoTransactionCreatesSummationBalance()
         {
             //Arrange
-            var account = new Account();
+            var account = new Account(AccountType.Silver);
             account.AddTransaction(50m);
 
             //Act
