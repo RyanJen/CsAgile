@@ -4,6 +4,11 @@ namespace CsAgile
 {
     public class FakeAccountRepository : IAccountRepository
     {
+        public FakeAccountRepository()
+        {
+            
+        }
+
         public FakeAccountRepository(Account account)
         {
             this.account = account;
@@ -12,6 +17,11 @@ namespace CsAgile
         public Account GetByName(string accountName)
         {
             return account;
+        }
+
+        public void NewAccount(AccountBase account)
+        {
+
         }
 
         private Account account;

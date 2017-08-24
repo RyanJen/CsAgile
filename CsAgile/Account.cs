@@ -13,7 +13,7 @@ namespace CsAgile
 
         public int RewardPoints { get; private set; }
 
-        public void AddTransaction(decimal amount)
+        public virtual void AddTransaction(decimal amount)
         {
             RewardPoints += CalculateRewardPoints(amount);
             Balance += amount;
@@ -22,16 +22,16 @@ namespace CsAgile
         public int CalculateRewardPoints(decimal amount)
         {
             int points;
-            switch(type)
+            switch (type)
             {
                 case AccountType.Silver:
-                    points = (int)decimal.Floor(amount / 10);
+                    points = (int)decimal.Floor(amount / SilverTransactionCostPerPoint);
                     break;
                 case AccountType.Gold:
-                    points = (int)decimal.Floor((Balance / 10000 * 5) + (amount / 5));
+                    points = (int)decimal.Floor((Balance / GoldBalanceCostPerPoint) + (amount / GoldTransactionCostPerPoint));
                     break;
                 case AccountType.Platinum:
-                    points = (int)decimal.Floor((Balance / 10000 * 10) + (amount / 2));
+                    points = (int)decimal.Floor((Balance / PlatinumBalanceCostPerPoint) + (amount / PlatinumTransactionCostPerPoint));
                     break;
                 default:
                     points = 0;
@@ -40,13 +40,13 @@ namespace CsAgile
             return Math.Max(points, 0);
         }
 
-        public AccountType type { get; private set; }
-    }
+        private const int SilverTransactionCostPerPoint = 10;
+        private const int GoldTransactionCostPerPoint = 5;
+        private const int PlatinumTransactionCostPerPoint = 2;
 
-    public enum AccountType
-    {
-        Silver,
-        Gold,
-        Platinum
+        private const int GoldBalanceCostPerPoint = 2000;
+        private const int PlatinumBalanceCostPerPoint = 1000;
+
+        public AccountType type { get; private set; }
     }
 }
